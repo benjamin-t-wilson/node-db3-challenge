@@ -36,10 +36,19 @@ function update(changes, id) {
     });
 }
 
+function remove(id) {
+  return db("schemes").where({ id })
+    ? db("schemes")
+        .where({ id })
+        .del()
+    : null;
+}
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
-  update
+  update,
+  remove
 };
